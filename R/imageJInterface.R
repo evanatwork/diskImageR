@@ -26,8 +26,11 @@ imageJInterface$methods(
     if (Sys.info()["sysname"] == "Darwin") {
       #Mac
       pathResult <- system(paste("mdfind -name ", filePath," | grep 'ImageJ.app'"), intern = TRUE)
+    } else if (Sys.info()["sysname"] == "Linux") {
+      # Linux (assuming ImageJ installed for the current user only)
+      pathResult <- system(paste("find ~ -type d -name ", filePath), intern = TRUE)
     } else {
-      #Windows or Linux
+      #Windows
       pathResult <- Sys.which(filePath)
     }
     #Return and store the imageJ file path if found
