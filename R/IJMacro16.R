@@ -135,6 +135,10 @@ function(projectName, projectDir=NA, photoDir=NA, imageJLoc=NA, diskDiam = 6, dr
 				call <- paste(imageJLoc,  "-batch", script, IJarguments, sep=" ")
 				knownIJLoc <- TRUE
 				}
+		if (knownIJLoc == FALSE & "ImageJ" %in% imageJLoc){
+				call <- paste(imageJLoc,  "-batch", script, IJarguments, sep=" ")
+				knownIJLoc <- TRUE
+				}
 		if(knownIJLoc == FALSE){
 			stop("ImageJ is not in expected location. Please move ImageJ to the Applications directory, or specify the path to its location using the argument 'imageJLoc'")
 				}
