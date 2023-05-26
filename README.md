@@ -2,16 +2,13 @@ This package provides a quantitative, unbiased method to analyze photographs of 
 
 ## Installing
 
-The package can be insalled directly from CRAN
-```r
-install.packages("diskImageR")
-```
+This is a fork of Aleeza Gerstein's diskImageR package. To see the original project, visit (https://github.com/acgerstein/diskImageR).
 
-or, for the latest version, can be installed from GitHub using [devtools](http://github.com/hadley/devtools)
+This version of the package can be installed from GitHub using [devtools](http://github.com/hadley/devtools)
 
 ```r
 #install.packages("devtools")
-devtools::install_github("acgerstein/diskImageR")
+devtools::install_github("evanatwork/diskImageR")
 ```
 
 ## Vignette
@@ -213,7 +210,5 @@ calcMIC("newProject")
 * Sincere thanks also to Adi Ulman for the original motivation, Noa Blutraich, Gal Benron, and Alexander Rosenberg for testing many versions of the code presented here, Yoav Ram for going through the code from the entire package, and Darren Abbey and particularly Judith Berman for philosophical discussions about how best to computationally capture the biological variation observed in disk assay experiments.
 
 ### Questions, comments, feedback? 
-Please contact Aleeza Gerstein, <gerst035@umn.edu>
+Please see Aleeza Gerstein's original package for additional contact information.
 
-### Updated
-Last updated March 2016
