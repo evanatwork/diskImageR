@@ -1,3 +1,27 @@
+function getSupportedFiles(dir, extensions) {
+	allFilesList = getFileList(dir1);
+	imageList = newArray();
+	for (i=0; i<allFilesList.length; i++) {
+		if(File.isDirectory(allFilesList[i])) {
+			print("Ignoring directory: "+allFilesList[i]);
+		} else if(endsWithAny(allFilesList[i], extensions)) {
+			imageList = Array.concat(imageList, newArray(allFilesList[i]));
+		} else {
+			print("Ignoring unsupported file: "+allFilesList[i]);
+		}
+	}
+	return imageList;
+}
+
+function endsWithAny(string, suffixes) {
+	for (i=0; i<suffixes.length; i++) {
+		if(endsWith(toLowerCase(string), toLowerCase(suffixes[i]))) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function alterImageSize(file) {
 	selectWindow(file);
 	picWidth = getWidth();
@@ -324,7 +348,8 @@ print("Input directory: "+dir1);
 print("Output directory: "+dir2);
 print("Disk diameter: "+knownDiam);
 diam10 = 10/knownDiam;
-list = getFileList(dir1);
+supported_extensions = newArray(".jpg", ".jpeg");
+list = getSupportedFiles(dir1, supported_extensions);
 print("Number of images: " + list.length);
 setBatchMode(true);
 
