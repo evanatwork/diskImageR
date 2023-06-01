@@ -24,7 +24,7 @@
 #' @export
 
 IJMacro <-
-function(projectName, projectDir=NA, photoDir=NA, imageJLoc=NA, diskDiam = 6){
+function(projectName, projectDir=NA, photoDir=NA, imageJLoc="ImageJ", diskDiam = 6){
 	# if(!is.char(projectName))
 	diskImageREnv <- new.env()
 	fileDir <- projectName
@@ -77,7 +77,7 @@ function(projectName, projectDir=NA, photoDir=NA, imageJLoc=NA, diskDiam = 6){
 	IJarguments <- paste(photoDir, outputDir, diskDiam, sep="*")
 	
 	#Create new imageJInterface object
-	ij <- imageJInterface(filePath = "ImageJ", memoryAllocation = 1024)
+	ij <- imageJInterface(filePath = imageJLoc, memoryAllocation = 1024)
 	#Run the imageJ processing script
 	ijOutput <- ij$runScript(paste(script, IJarguments))
 	#Check for error messages

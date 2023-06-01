@@ -29,8 +29,13 @@ imageJInterface$methods(
     } else if (Sys.info()["sysname"] == "Linux") {
       # Linux (assuming ImageJ installed for the current user only)
       pathResult <- system(paste("find ~ -type d -name ", filePath), intern = TRUE)
+    } else if (Sys.info()["sysname"] == "Windows") {
+      # Windows
+      # Add likely locations to the search path.
+      Sys.setenv(PATH=paste(c("C:\\Program Files\\ImageJ", "C:\\Program Files (x86)\\ImageJ", Sys.getenv("PATH")),collapse=";"))
+      pathResult <- Sys.which(filePath)
     } else {
-      #Windows
+      # Unknown system
       pathResult <- Sys.which(filePath)
     }
     #Return and store the imageJ file path if found
