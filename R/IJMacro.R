@@ -88,21 +88,13 @@ function(projectName, projectDir=NA, photoDir=NA, imageJLoc="ImageJ", diskDiam =
 	  message(paste("The imageJ script executed successfully", ijOutput))
 	}
 
-	count_wait<-0.0;
-	while(length(dir(outputDir))<length(dir(photoDir)) && count_wait<1e12)
-	{
-	  count_wait<-count_wait+1.0
-	}
 	cat(paste("\nOutput of imageJ analyses saved in directory: \n", outputDir, "\n", sep=""))
-	# cat(paste("\nElements in list '", projectName, "': \n", sep=""))
 	findAveL <- .ReadIn_DirCreate(projectDir, outputDir, projectName)
+	cat(paste(length(findAveL), " output files saved.\n"))
 	if(!length(dir(photoDir)) == length(findAveL)){
-		stop("Mismatch between the number of files in the photograph directory and the number of images analyzed. This likely indicates a non-photograph file is located in this directory. Please remove and rerun before continuing.")
-		}
+		cat("Mismatch between the number of files in the photograph directory and the number of images analyzed. This likely indicates a non-photograph file is located in this directory. Please check the list of processed images before continuing.")
+	}
 	cat("\a")
-#	assign(projectName, temp, envir=globalenv())
-#	assign(projectName, temp, envir=	diskImageREnv)
-	#assign(projectName, findAveL, inherits=TRUE, envir=globalenv())
 	assign(projectName, findAveL, envir=globalenv())
 
 	dfNA <- .saveAveLine(findAveL)
