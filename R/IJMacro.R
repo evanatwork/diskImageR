@@ -74,7 +74,7 @@ function(projectName, projectDir=NA, photoDir=NA, imageJLoc="ImageJ", diskDiam =
 	dir.create(file.path(projectDir, "parameter_files", fileDir), showWarnings=FALSE)
 
 	script <- file.path(.libPaths(), "diskImageR", "IJ_diskImageR.ijm")
-	IJarguments <- paste(photoDir, outputDir, diskDiam, sep="*")
+	IJarguments <- paste(quote_wrap(photoDir), quote_wrap(outputDir), diskDiam, sep="*")
 	
 	#Create new imageJInterface object
 	ij <- imageJInterface(filePath = imageJLoc, memoryAllocation = 1024)
@@ -219,4 +219,9 @@ function(filename) {
 
 rcmd_running <- function() {
   nchar(Sys.getenv('R_TESTS')) != 0
+}
+
+quote_wrap <- function(text) {
+	# A very naive attempt to make paths with spaces safe to pass as arguments to ImageJ.
+	paste("\"", text, "\"", sep="")
 }
