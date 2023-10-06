@@ -73,7 +73,7 @@ function(projectName, projectDir=NA, photoDir=NA, imageJLoc="ImageJ", diskDiam =
 	dir.create(file.path(projectDir, "parameter_files"), showWarnings=FALSE)
 	dir.create(file.path(projectDir, "parameter_files", fileDir), showWarnings=FALSE)
 
-	script <- file.path(.libPaths(), "diskImageR", "IJ_diskImageR.ijm")
+	script <- quote_wrap(file.path(.libPaths(), "diskImageR", "IJ_diskImageR.ijm"))
 	IJarguments <- paste(quote_wrap(photoDir), quote_wrap(outputDir), diskDiam, sep="*")
 	
 	#Create new imageJInterface object
