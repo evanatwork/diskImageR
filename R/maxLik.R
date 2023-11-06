@@ -181,7 +181,7 @@ maxLik <- function(projectName, standType ="one", clearHalo, diskDiam = 6, stand
 .curve2 <- function(asym, od50, scal, asymB, od50B, scalB, x) { asym*exp(scal*(x-od50))/(1+exp(scal*(x-od50)))+asymB*exp(scalB*(x-od50B))/(1+exp(scalB*(x-od50B)))}
 
 .getstatsLog <- function(i, data, stand, dotedge=dotedge, maxDist=maxDist, maxSlope=100){
-	cat(".")
+	cat(paste(names(data)[i], " "))
 	startX <- which(data[[i]][,1] > dotedge+0.5)[1]
 	stopX <- which(data[[i]][,1] > maxDist - 0.5)[1]
 	data[[i]] <- data[[i]][startX:stopX, 1:2]
@@ -222,7 +222,7 @@ maxLik <- function(projectName, standType ="one", clearHalo, diskDiam = 6, stand
 }
 
 .getstats2Log <- function(i, data, stand, dotedge=dotedge, maxDist=maxDist, maxSlope=100){
-	cat(".")
+	cat(paste(names(data)[i], " "))
 	startX <- which(data[[i]][,1] > dotedge+0.5)[1]
 	stopX <- which(data[[i]][,1] > maxDist - 0.5)[1]
 	data[[i]] <- data[[i]][startX:stopX, 1:2]
@@ -281,7 +281,7 @@ maxLik <- function(projectName, standType ="one", clearHalo, diskDiam = 6, stand
 
 
 .getstatsLogIndiv <- function(i, data, dotedge=dotedge, maxDist=maxDist, maxSlope=300, testInhib = testInhib){
-	cat(".")
+	cat(paste(names(data)[i], " "))
 	startX <- which(data[[i]][,1] > dotedge)[1]
 	stopX <- which(data[[i]][,1] > maxDist - 0.5)[1]
 	data[[i]] <- data[[i]][startX:stopX, 1:2]
@@ -352,7 +352,7 @@ maxLik <- function(projectName, standType ="one", clearHalo, diskDiam = 6, stand
 }
 
 .getstats2LogIndiv <- function(i, data, dotedge=dotedge, maxDist=maxDist, maxSlope=300, testInhib = testInhib){
-	cat(".")
+	cat(paste(names(data)[i], " "))
 	startX <- which(data[[i]][,1] > dotedge)[1]
 	stopX <- which(data[[i]][,1] > maxDist - 0.5)[1]
 	data[[i]] <- data[[i]][startX:stopX, 1:2]
